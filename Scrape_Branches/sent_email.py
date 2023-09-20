@@ -6,6 +6,14 @@ from email.mime.base import MIMEBase
 from email import encoders
 import smtplib
 
+EMAIL_BODY = """
+    Hello,
+
+    Attached you can find the Fibank Branches working on the weekends
+
+    Best Regards
+"""
+
 
 def sent_email(excel_file_path):
     gmail_user = os.environ.get('GMAIL_USER')
@@ -24,13 +32,7 @@ def sent_email(excel_file_path):
     msg['From'] = gmail_user
     msg['To'] = recipient_email
     msg['Subject'] = "Fibank Branches Data"
-    email_body = """
-    Hello,
-
-    Attached you can find the Fibank Branches working on the weekends
-
-    Best Regards
-    """
+    email_body = EMAIL_BODY
     msg.attach(MIMEText(email_body, 'plain'))
 
     # Attach the Excel file to the email

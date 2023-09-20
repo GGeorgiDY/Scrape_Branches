@@ -28,12 +28,12 @@ def scrape_fibank_branches():
     for office in office_elements:
         if not office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.satStartTime"}):
             continue
-        else:
-            office_name = office.find("p", attrs={"bo-bind": "item.name"}).text.strip()
-            address = office.find("p", attrs={"bo-bind": "item.address"}).text.strip()
-            telephone = office.find("p", class_="info-wrapper s2").text.strip()
-            sat_hours = " ".join((office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.satStartTime"}).text.strip()).split()) if office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.satStartTime"}) else ""
-            sun_hours = " ".join((office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.sunStartTime"}).text.strip()).split()) if office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.sunStartTime"}) else ""
+
+        office_name = office.find("p", attrs={"bo-bind": "item.name"}).text.strip()
+        address = office.find("p", attrs={"bo-bind": "item.address"}).text.strip()
+        telephone = office.find("p", class_="info-wrapper s2").text.strip()
+        sat_hours = " ".join((office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.satStartTime"}).text.strip()).split()) if office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.satStartTime"}) else ""
+        sun_hours = " ".join((office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.sunStartTime"}).text.strip()).split()) if office.find("p", class_="ng-binding ng-scope", attrs={"bo-if": "worktime.sunStartTime"}) else ""
 
         office_names.append(office_name)
         addresses.append(address)
